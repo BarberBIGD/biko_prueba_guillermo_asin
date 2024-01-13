@@ -23,7 +23,7 @@ const Item = () => {
         const grupos = [];
 
         for (let i=0; i < productos.length; i += nGrupos){
-            grupos.push(productos.slice(i, i + nGrupos)) //Primer caso sería slice(0, 3), segundo (4, 7)
+            grupos.push(productos.slice(i, i + nGrupos)) //Hacemos push en grupos de 4
         }
 
         return grupos;
