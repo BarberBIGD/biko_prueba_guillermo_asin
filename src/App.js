@@ -15,7 +15,7 @@ function App() {
           {/* establecemos el elemento raiz de la ruta */}
           <Route path="/" element={<Item />} /> 
           {/* establecemos el elemento detalle */}
-          <Route path="/item/:id" element={<ItemDetalle />} /> 
+          <Route path="/Productos/:id" element={<ItemDetalle />} /> 
         </Routes>
       </Container>
     </Router>

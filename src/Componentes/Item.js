@@ -38,7 +38,7 @@ const Item = () => {
                 <Row key={index} md={4} xs={1}> 
                     {productosGrupo.map( producto => (
                         <Col key={producto.id}>
-                            <Link to={`/item/${producto.id}`} style={{ textDecoration: 'none' }}>
+                            <Link to={`/Productos/${producto.id}`} style={{ textDecoration: 'none' }}>
                             <Card>
                                 <Card.Img src={producto.imgUrl} />
                                 <Card.Body>

@@ -1,14 +1,22 @@
 import React, {useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link} from "react-router-dom";
 import { obtenerProductosId } from "../Api/Productos/apiItemId";
 import Imagen from "./Imagen";
 import Descripcion from "./Descripcion";
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 const ItemDetalle = () => {
 
     const { id } = useParams();
     const [producto, setProducto] = useState([]);
+    const navegacion = useNavigate();
+
+    const handleClick = () => { //react ya hace los addEventListerner por su cuenta
+        navegacion(-1); 
+      };
 
     useEffect( () => {
         obtenerProductosId(id).then(data => setProducto(data)); //actualizo cada vea que cambia la id
@@ -25,7 +33,9 @@ const ItemDetalle = () => {
             </div>
             <div className="row py-3">
                 <div className="col-md-4 col-xs-1 offset-md-8">
-                
+                    <button onClick={handleClick}>
+                        VOLVER ATRÁS
+                    </button>
                 </div>
             </div>
             <div className="row py-3">
