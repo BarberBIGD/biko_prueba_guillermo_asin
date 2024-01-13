@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { obtenerProductosId } from "../Api/Productos/apiItemId";
 import Imagen from "./Imagen";
+import Descripcion from "./Descripcion";
 
 
 const ItemDetalle = () => {
@@ -19,18 +20,24 @@ const ItemDetalle = () => {
 
     return (
         <div>
-            <div className="row">
+            <div className="row py-3 justify-content-center text-center">
+                <h1>Detalle Planta: {producto.name}</h1>
+            </div>
+            <div className="row py-3">
                 <div className="col-md-4 col-xs-1 offset-md-8">
                 
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-6 col-xs-1 d-flex justify-content-center">
-                    <Imagen imagenUrl={producto.imgUrl} name={producto.name} />
-                </div>
-                <div className="col-md-6 col-xs-1 d-flex justify-content-center">
-                    
-                </div>
+            <div className="row py-3">
+                <Imagen imagenUrl={producto.imgUrl} name={producto.name} />
+                <Descripcion 
+                name={producto.name} 
+                binomialName={producto.binomialName}
+                price={producto.price}
+                wateringsPerWeek={producto.wateringsPerWeek}
+                fertilizerType={producto.fertilizerType}
+                heightInCm={producto.heightInCm}                
+                />
             </div>
         </div>
     )

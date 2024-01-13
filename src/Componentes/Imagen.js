@@ -3,7 +3,9 @@ import React from "react";
 const Imagen = ( {imagenUrl, name}) => {
 
     return (
-        <img src={imagenUrl} alt={name}/>
+        <div className="col-md-6 col-xs-1 d-flex justify-content-center">
+            <img src={imagenUrl} alt={name}/>
+        </div>
     )
 }
 
