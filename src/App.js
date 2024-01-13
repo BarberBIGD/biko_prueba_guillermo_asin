@@ -1,4 +1,3 @@
-import logo from './Recursos/logo.svg';
 import Item from './Componentes/Item';
 import ItemDetalle from './Componentes/ItemDetalle';
 import 'bootstrap/dist/css/bootstrap.min.css';

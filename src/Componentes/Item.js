@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { obtenerProductos  } from "../Api/Productos/apiItem";
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Buscador from './Buscador';
 
 
 
 const Item = () => {
 
     const [productos, setProductos] = useState([]);
+    // lo inicio en cero para que este vacío al principio y no cumpla la condición
+    // y se muestren todos los productos
+    const [busqueda, setBusqueda] = useState('');
 
     useEffect( () => {
         obtenerProductos().then(data => setProductos(data)); //actualizo cada vea que cambia
@@ -25,18 +29,37 @@ const Item = () => {
         return grupos;
     }
 
-    const productosGrupos = dividirDatos(productos, 4);
+    //const productosGrupos = dividirDatos(productos, 4);
 
-    if (!productos) {
-        return <div>Cargando...</div>;
-    }
+
+    const productosFiltrados = productos.filter(producto => 
+        producto.name.toLowerCase().includes(busqueda.toLowerCase()) ||
+        producto.binomialName.toLowerCase().includes(busqueda.toLowerCase())
+    );
+
+    //console.log(productosFiltrados);
+
+    const productosGrupos = dividirDatos(productosFiltrados, 4);
 
     //console.log(productosGrupos);
 
     //console.log(productos);
 
+    //evento entrada buscador
+
+    const handleChange = e => {
+        setBusqueda(e.target.value);
+        //console.log(e.target.value);
+      };
+
+
+    if (!productos) {
+        return <div>Cargando...</div>;
+    }
+
     return (
         <Container>
+            <Buscador busqueda={busqueda} handleChange={handleChange}/>
             {productosGrupos.map( (productosGrupo, index) => (
                 // cada elemento debe tener una clave unica
                 <Row key={index} md={4} xs={1}> 

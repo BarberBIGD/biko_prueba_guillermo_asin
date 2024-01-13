@@ -8,7 +8,7 @@ const Header = () => {
     const breadcrumb = location.pathname;
 
     return (
-        <div className="row">
+        <div className="row py-3">
             <div className="row">
                 <div className="col-md-1">
                     <img src={logo} />
