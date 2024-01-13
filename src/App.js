@@ -4,6 +4,7 @@ import ItemDetalle from './Componentes/ItemDetalle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import Header from './Componentes/Header';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     //es la manera mas apropiada para poder hacer SPA y manejarnos con el detalle de los items
     <Router>
       <Container>
+        <Header />
         <Routes>
           {/* establecemos el elemento raiz de la ruta */}
           <Route path="/" element={<Item />} /> 

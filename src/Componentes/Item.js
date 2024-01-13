@@ -27,6 +27,10 @@ const Item = () => {
 
     const productosGrupos = dividirDatos(productos, 4);
 
+    if (!productos) {
+        return <div>Cargando...</div>;
+    }
+
     //console.log(productosGrupos);
 
     //console.log(productos);
