@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerProductos  } from "../Api/Productos/apiItem";
+import { Container, Row, Col, Card } from 'react-bootstrap';
+
 
 const Item = () => {
 
@@ -14,7 +16,7 @@ const Item = () => {
     const dividirDatos = (productos, nGrupos) => {
         const grupos = [];
 
-        for (let i=0; i < productos.length; i+= nGrupos){
+        for (let i=0; i < productos.length; i += nGrupos){
             grupos.push(productos.slice(i, i + nGrupos)) //Primer caso sería slice(0, 3), segundo (4, 7)
         }
 
@@ -23,18 +25,31 @@ const Item = () => {
 
     const productosGrupos = dividirDatos(productos, 4);
 
+    console.log(productosGrupos);
 
     //console.log(productos);
 
     return (
-
-            productosGrupos.map(productosGrupo => (
-                productosGrupo.map( producto => (
-                    <img src={producto.imgUrl} />
-                ))
-            ))
+        <Container>
+            {productosGrupos.map( (productosGrupo, index) => (
+                // cada elemento debe tener una clave unica
+                <Row key={index} md={4} xs={1}> 
+                    {productosGrupo.map( producto => (
+                        <Col key={producto.id}>
+                            <Card>
+                                <Card.Img src={producto.imgUrl} />
+                                <Card.Body>
+                                    <Card.Title>Nombre: {producto.name}</Card.Title>
+                                    <Card.Text>Nombre Científico: {producto.binomialName}</Card.Text>
+                                    <Card.Text>Precio: {producto.price} €</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>                
+            ))}
+        </Container>            
     )
-
 }
 
 export default Item;
