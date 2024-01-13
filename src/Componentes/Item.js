@@ -6,20 +6,33 @@ const Item = () => {
     const [productos, setProductos] = useState([]);
 
     useEffect( () => {
-        obtenerProductos().then(data => setProductos(data));
+        obtenerProductos().then(data => setProductos(data)); //actualizo cada vea que cambia
     }, []);
 
-    console.log(productos);
+    //vamos a dividir productos en arrays de 4
+
+    const dividirDatos = (productos, nGrupos) => {
+        const grupos = [];
+
+        for (let i=0; i < productos.length; i+= nGrupos){
+            grupos.push(productos.slice(i, i + nGrupos)) //Primer caso sería slice(0, 3), segundo (4, 7)
+        }
+
+        return grupos;
+    }
+
+    const productosGrupos = dividirDatos(productos, 4);
+
+
+    //console.log(productos);
 
     return (
 
-            
-            productos.map( producto => (
-                producto.imgUrl
-
-            )
-            )
-
+            productosGrupos.map(productosGrupo => (
+                productosGrupo.map( producto => (
+                    <img src={producto.imgUrl} />
+                ))
+            ))
     )
 
 }
