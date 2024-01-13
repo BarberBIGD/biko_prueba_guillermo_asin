@@ -25,7 +25,7 @@ const Item = () => {
 
     const productosGrupos = dividirDatos(productos, 4);
 
-    console.log(productosGrupos);
+    //console.log(productosGrupos);
 
     //console.log(productos);
 
