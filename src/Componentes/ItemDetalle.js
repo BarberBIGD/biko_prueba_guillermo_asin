@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
-import { useParams, Link} from "react-router-dom";
-import { obtenerProductosId } from "../Api/Productos/apiItemId";
+import { useParams } from "react-router-dom";
+import { obtenerProductos } from "../Api/Productos/apiItem";
 import Imagen from "./Imagen";
 import Descripcion from "./Descripcion";
 import { useNavigate } from 'react-router-dom';
-
-
 
 
 const ItemDetalle = () => {
@@ -19,7 +17,7 @@ const ItemDetalle = () => {
       };
 
     useEffect( () => {
-        obtenerProductosId(id).then(data => setProducto(data)); //actualizo cada vea que cambia la id
+        obtenerProductos(id).then(data => setProducto(data)); //actualizo cada vea que cambia la id
     }, [id]);
 
     if (!producto) {

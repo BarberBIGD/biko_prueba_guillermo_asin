@@ -10,10 +10,10 @@ const Header = () => {
     return (
         <div className="row py-3">
             <div className="row">
-                <div className="col-md-1">
+                <div className="col-md-1 col-xs-1">
                     <img src={logo} />
                 </div>
-                <div className="col-md-4 d-flex justify-content-start align-items-center">
+                <div className="col-md-10 col-xs-1 d-flex justify-content-start align-items-center">
                     <h3>Floristeria Guillermo Asín</h3>
                 </div>
             </div>

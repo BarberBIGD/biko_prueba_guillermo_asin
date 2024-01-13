@@ -62,15 +62,15 @@ const Item = () => {
             <Buscador busqueda={busqueda} handleChange={handleChange}/>
             {productosGrupos.map( (productosGrupo, index) => (
                 // cada elemento debe tener una clave unica
-                <Row key={index} md={4} xs={1}> 
+                <Row key={index} md={4} xs={1} className='py-2'> 
                     {productosGrupo.map( producto => (
                         <Col key={producto.id}>
                             <Link to={`/Productos/${producto.id}`} style={{ textDecoration: 'none' }}>
-                            <Card>
-                                <Card.Img src={producto.imgUrl} />
-                                <Card.Body>
+                            <Card className="h-100">
+                            <Card.Img src={producto.imgUrl} style={{ height: '50%', width: '100%', objectFit: 'cover' , objectPosition: 'center'}} />
+                                <Card.Body className='d-flex m-2 justify-content-center align-items-start flex-column'>
                                     <Card.Title>Nombre: {producto.name}</Card.Title>
-                                    <Card.Text>Nombre Científico: {producto.binomialName}</Card.Text>
+                                    <Card.Text>Científico: {producto.binomialName}</Card.Text>
                                     <Card.Text>Precio: {producto.price} €</Card.Text>
                                 </Card.Body>
                             </Card>
