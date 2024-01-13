@@ -9,6 +9,8 @@ const obtenerProductos = async () =>  {
         if (!respuesta.ok){
             throw new Error("No se han podido obtener los productos de la API");
         }
+        const datos = await respuesta.json();
+        return datos;
         
     } catch (error) {
         console.log("Error", error);
