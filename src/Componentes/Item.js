@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerProductos  } from "../Api/Productos/apiItem";
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 const Item = () => {
@@ -36,6 +38,7 @@ const Item = () => {
                 <Row key={index} md={4} xs={1}> 
                     {productosGrupo.map( producto => (
                         <Col key={producto.id}>
+                            <Link to={`/item/${producto.id}`} style={{ textDecoration: 'none' }}>
                             <Card>
                                 <Card.Img src={producto.imgUrl} />
                                 <Card.Body>
@@ -44,6 +47,7 @@ const Item = () => {
                                     <Card.Text>Precio: {producto.price} €</Card.Text>
                                 </Card.Body>
                             </Card>
+                            </Link>
                         </Col>
                     ))}
                 </Row>                
